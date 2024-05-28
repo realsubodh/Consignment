@@ -17,11 +17,14 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
+    - name: Configure Git
+      run: |
+        git config --global user.name 'realsubodh'
+        git config --global user.email 'subodhsingh3477@gmail.com'
+
     - name: Make a change
       run: |
         echo $(date) > date.txt
-        git config --global user.name 'realsubodh'
-        git config --global user.email 'subodhsingh3477@gmail.com'
         git add date.txt
         git commit -m "Daily commit"
 
