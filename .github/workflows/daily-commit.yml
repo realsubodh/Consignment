@@ -38,4 +38,4 @@ jobs:
         PAT: ${{ secrets.PAT }}
       run: |
         git remote -v # Debugging line to check remote url
-        git push https://realsubodh:${{ secrets.PAT }}@github.com/realsubodh/Consignment.git
+        git push https://realsubodh:${{ secrets.PAT }}@github.com/realsubodh/daily-commit-repo.git
