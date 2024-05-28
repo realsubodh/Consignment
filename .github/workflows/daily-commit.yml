@@ -9,33 +9,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
         node-version: '20'
-
-    - name: Verify Node.js Version
-      run: node -v
-
-    - name: Checkout Repository
-      uses: actions/checkout@v3
-
-    - name: Configure Git
-      run: |
-        git config --global user.name 'realsubodh'
-        git config --global user.email 'subodhsingh3477@gmail.com'
 
     - name: Make a change
       run: |
         echo $(date) > date.txt
-        cat date.txt # Debugging line to check content of date.txt
+        git config --global user.name 'realsubodh'
+        git config --global user.email 'subodhsingh3477@gmail.com'
         git add date.txt
-        git status # Debugging line to check git status
         git commit -m "Daily commit"
 
     - name: Push changes
       env:
         PAT: ${{ secrets.PAT }}
       run: |
-        git remote -v # Debugging line to check remote url
         git push https://realsubodh:${{ secrets.PAT }}@github.com/realsubodh/daily-commit-repo.git
