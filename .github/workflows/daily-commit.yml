@@ -24,6 +24,7 @@ jobs:
       run: |
         git config --global user.name 'realsubodh'
         git config --global user.email 'subodhsingh3477@gmail.com'
+        git config --global --add safe.directory /github/workspace
 
     - name: Make a change
       run: |
@@ -40,5 +41,6 @@ jobs:
         echo "Debug: Checking remote URL"
         git remote -v # Debugging line to check remote URL
         echo "Debug: Pushing changes"
-        git push https://realsubodh:${{ secrets.PAT }}@github.com/realsubodh/daily-commit-repo.git || exit 1
-        echo "Debug: Push completed"
+        git push https://realsubodh:${{ secrets.PAT }}@github.com/realsubodh/daily-commit-repo.git
+      continue-on-error: true
+
