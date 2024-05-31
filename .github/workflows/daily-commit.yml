@@ -41,6 +41,6 @@ jobs:
         echo "Debug: Checking remote URL"
         git remote -v # Debugging line to check remote URL
         echo "Debug: Pushing changes"
-        git push https://realsubodh:${{ secrets.PAT }}@github.com/realsubodh/daily-commit-repo.git
-      continue-on-error: true
+        GIT_TRACE=1 GIT_CURL_VERBOSE=1 git push https://realsubodh:${{ secrets.PAT }}@github.com/realsubodh/daily-commit-repo.git
+
 
